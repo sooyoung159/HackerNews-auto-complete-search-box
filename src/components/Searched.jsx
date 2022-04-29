@@ -34,7 +34,10 @@ const Searched = () => {
           ) : (
             <div>
               <div>
-                Title : <a href={data.url}>{data.title}</a>
+                Title :{" "}
+                <a href={data.url} target="_blank" rel="noreferrer">
+                  {data.title}
+                </a>
               </div>
               <div>Author : {data.author}</div>
               <div>Points : {data.points}</div>
