@@ -25,7 +25,7 @@ const DropDown = ({ isLoading, datas, selected }) => {
           key={data.objectID}
           onClick={() => onDropDownClick(data.objectID)}
         >
-          <div>{data.title}</div>
+          <div>{data.title.substr(0, 40) + "..."}</div>
           <SearchIcons />
         </List>
       ))}

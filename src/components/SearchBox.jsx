@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import useDebounce from "../hooks/useDebounce";
 import { useGetRecommendQuery } from "../services/recommends";
@@ -44,7 +44,7 @@ const SearchBox = () => {
 
   useEffect(() => {
     navigate(`/${id}`);
-  }, [id]);
+  }, [id, navigate]);
 
   return (
     <Wrapper>
@@ -57,6 +57,7 @@ const SearchBox = () => {
               onChange={handleInputChange}
               onKeyDown={handleKeyUp}
               value={keyword}
+              autoFocus
             />
             <SearchIcon />
             <SearchBtn>검색</SearchBtn>

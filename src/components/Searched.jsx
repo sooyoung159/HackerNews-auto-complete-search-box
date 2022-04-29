@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
 import styled from "styled-components";
 import parse from "html-react-parser";
@@ -7,23 +7,18 @@ import Loader from "./Loader";
 
 const Searched = () => {
   const objectId = useParams();
-  console.log(objectId.id);
   const [data, setData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(
-    useCallback(() => {
-      fetch(`http://hn.algolia.com/api/v1/items/${objectId.id}`)
-        .then(async (res) => {
-          const newData = await res.json();
-          setData(newData);
-          setIsLoading(true);
-          console.log(newData);
-        })
-        .catch((err) => console.log(err));
-    }),
-    []
-  );
+  useEffect(() => {
+    fetch(`http://hn.algolia.com/api/v1/items/${objectId.id}`)
+      .then(async (res) => {
+        const newData = await res.json();
+        setData(newData);
+        setIsLoading(true);
+      })
+      .catch((err) => console.log(err));
+  }, [objectId.id]);
 
   return (
     <Wrapper>
@@ -101,7 +96,7 @@ const DisplayBox = styled.div`
   border-radius: 20px;
   padding: 20px;
   @media screen and (max-width: 820px) {
-    width: 90%;
+    width: 80%;
   }
 `;
 
